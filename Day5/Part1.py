@@ -25,7 +25,6 @@ def create_mapping(val_arr):
     mapping = []
     for t in val_arr:
         val = list(map(int, t.split()))
-        # mapping[(val[1], val[1]+val[2]-1)] = (val[0], val[0]+val[2]-1)
         mapping.append([val[1], val[1]+val[2]-1, val[0]-val[1]])
     return mapping
 
@@ -36,8 +35,6 @@ wate_to_ligh_map = create_mapping(grouped_input[4][1:])
 ligh_to_temp_map = create_mapping(grouped_input[5][1:])
 temp_to_humi_map = create_mapping(grouped_input[6][1:])
 humi_to_loca_map = create_mapping(grouped_input[7][1:])
-# print("Seed to soil map:", seed_to_soil_map)
-
 
 def convert_to_dest(val, mapping):
     for mp in mapping:
@@ -46,7 +43,6 @@ def convert_to_dest(val, mapping):
             break
     return val
 
-# soils = []
 locations = []
 for x in seeds:
     x = convert_to_dest(x, seed_to_soil_map)
@@ -58,7 +54,6 @@ for x in seeds:
     x = convert_to_dest(x, humi_to_loca_map)
     locations.append(x)
 
-# print(seeds)
 print("Locations:", locations)
 print("Min Location:", min(locations))
 
